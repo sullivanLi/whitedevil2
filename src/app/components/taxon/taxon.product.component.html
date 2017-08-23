@@ -1,0 +1,33 @@
+<div class="breadcrumbs">
+  <ul class="breadcrumbs_item">
+    <li>
+      <a routerLink="/">Home</a>
+    </li>
+    <li *ngIf="taxon">{{taxon.name}}</li>
+  </ul>
+
+</div>
+
+<div class="content_wrapper">
+  <h1 *ngIf="taxon">{{taxon.name}}</h1>
+
+  <div class="product_list_container">
+    <div *ngFor="let product of products" class="product_item">
+      <img src="http://139.162.34.44:8084/{{product.master.images[0].large_url}}">
+
+      <div class="action_btns">
+        <div class="add_to_cart">
+          <a href="#">Add to Cart</a>
+        </div>
+        <div class="view_details">
+          <a href="#">Quick View</a>
+        </div>
+      </div>
+
+      <div class="product_item_title">
+        <h2><a routerLink="/products/{{product.slug}}">{{product.name}}</a></h2>
+        <h3>{{product.display_price}}</h3>
+      </div>
+    </div>
+  </div>
+</div>

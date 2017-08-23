@@ -1,0 +1,63 @@
+.free_shipping {
+  background-color: #262626;
+  color: #ffffff;
+}
+
+.free_shipping p {
+  margin: 0;
+  padding: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+
+}
+
+.free_shipping a {
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.free_shipping a:hover {
+  color: #cccccc;
+}
+
+/* navigation style */
+nav a {
+  text-align: center;
+}
+
+nav img {
+  max-width: 64px;
+  margin: 20px auto 0;
+}
+
+nav ul {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  font-size: 25px;
+  text-decoration: none;
+  color: #333;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+  color: #666666;
+}
+
+@media only screen and (min-width: 450px) {
+  nav ul li a {
+    font-size: 30px;
+  }
+}

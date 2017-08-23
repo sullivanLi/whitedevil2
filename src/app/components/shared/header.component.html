@@ -1,0 +1,13 @@
+<div class="free_shipping">
+  <p>Free standard shipping over $150. <a href="#">Details</a>
+  </p>
+</div>
+<nav>
+  <a routerLink="/">
+    <img src="app/images/logo.svg" alt="logo">
+  </a>
+
+  <ul>
+    <li *ngFor="let taxon of taxons" class="gradient"><a routerLink="/taxons/{{taxon.id}}">{{taxon.name}}</a></li>
+  </ul>
+</nav>

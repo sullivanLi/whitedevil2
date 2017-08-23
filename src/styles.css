@@ -1,0 +1,151 @@
+html {
+  box-sizing: border-box;
+
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: #262626;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.content_wrapper {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+
+/* loading cloud icon */
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 12em;
+  height: 10em;
+  font-size: 1em; /* control icon size here */
+}
+
+.cloud {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 3.6875em;
+  height: 3.6875em;
+  margin: -1.84375em;
+  background: white;
+  border-radius: 50%;
+  box-shadow:
+    -2.1875em 0.6875em 0 -0.6875em white,
+    2.0625em 0.9375em 0 -0.9375em white,
+    0 0 0 0.375em #777,
+    -2.1875em 0.6875em 0 -0.3125em #777,
+    2.0625em 0.9375em 0 -0.5625em #777;
+}
+
+.cloud:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -0.5em;
+  display: block;
+  width: 4.5625em;
+  height: 1em;
+  background: white;
+  box-shadow: 0 0.4375em 0 -0.0625em #777;
+}
+
+.cloud:nth-child(2) {
+  z-index: 0;
+  background: black;
+  box-shadow:
+    -2.1875em 0.6875em 0 -0.6875em black,
+    2.0625em 0.9375em 0 -0.9375em black,
+    0 0 0 0.375em black,
+    -2.1875em 0.6875em 0 -0.3125em black,
+    2.0625em 0.9375em 0 -0.5625em black;
+  opacity: 0.5;
+  transform: scale(0.5) translate(6em, -3em);
+  animation: cloud 4s linear infinite;
+}
+.cloud:nth-child(2):after { background: black; }
+
+.snow {
+  position: absolute;
+  z-index: 2;
+  top: 85%;
+  left: 50%;
+}
+
+.flake:before,
+.flake:after {
+  content: '\2744';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -1.025em 0 0 -1.0125em;
+  color: black;
+  list-height: 1em;
+  opacity: 0.3;
+  animation: spin 8s linear infinite reverse;
+}
+.flake:after {
+  margin: 0.125em 0 0 -1em;
+  font-size: 1.5em;
+  opacity: 0.4;
+  animation: spin 14s linear infinite;
+}
+.flake:nth-child(2):before {
+  margin: -0.5em 0 0 0.25em;
+  font-size: 1.25em;
+  opacity: 0.2;
+  animation: spin 10s linear infinite;
+}
+.flake:nth-child(2):after {
+  margin: 0.375em 0 0 0.125em;
+  font-size: 2em;
+  opacity: 0.4;
+  animation: spin 16s linear infinite reverse;
+}
+
+@keyframes cloud {
+  0% { opacity: 0; }
+  50% { opacity: 0.3; }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate(-200%, -3em);
+  }
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
