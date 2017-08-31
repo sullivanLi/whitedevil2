@@ -10,7 +10,8 @@ import { ProductService } from '../../services/product.service';
 export class ProductComponent {
   product = {};
   options: Option[];
-  image: Image[];
+  option_images = {};
+  basic_images: Image[];
 
   constructor(
     private productService: ProductService,
@@ -22,24 +23,34 @@ export class ProductComponent {
       .switchMap((params: Params) => this.productService.getProduct(params['slug']))
       .subscribe(productObj => {
         this.product = productObj;
-        console.log(this.product);
-        this.image = productObj.master.images[0].product_url;
+        this.basic_images = productObj.master.images;
+        this.options = [];
         productObj.variants.forEach((variant: any) => {
-          variant.option_values.forEach((option: any) => {
-            this.options.push({
-              variant_id: variant.id,
-              option_type_name: option.option_type_name,
-              option_presentation: option.presentation,
-              images: variant.images
-            });
+          this.options.push({
+            variant_id: variant.id,
+            options_text: variant.options_text,
           });
+          this.option_images[variant.id] = variant.images;
         });
       });
   }
 
-  public changeImage(url: string) {
-    let prodImage = document.getElementById("changedImage") as HTMLImageElement;
-    prodImage.src = 'http://139.162.34.44:8084' + url;
+  public addImage(variant_id: string) {
+    let gallery_div = document.querySelector('#gallery');
+    let optional_images = gallery_div.querySelectorAll('.optional');
+    removeImage(gallery_div, optional_images);
+    this.option_images[variant_id].forEach((image: any) => {
+      let img = document.createElement('img');
+      img.className = 'optional';
+      img.src = 'http://139.162.34.44:8084' + image.product_url;
+      gallery_div.insertBefore(img, gallery_div.firstChild);
+    });
+  }
+
+  function removeImage(parent: object, images: array) {
+    images.forEach((image:any) => {
+      parent.removeChild(image);
+    });
   }
 }
 interface Option {}

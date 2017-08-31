@@ -1,29 +1,15 @@
 <div class="page_wrapper">
-  <div class="product_image" id="demo">
-    <!-- <img src="http://lorempixel.com/400/200/sports/" alt=""> -->
-    <img src="http://139.162.34.44:8084{{image}}" alt="" id="changedImage">
+  <div class="product_image" id="gallery">
+    <img *ngFor="let image of basic_images" src="http://139.162.34.44:8084{{image.product_url}}" alt="">
   </div>
   <div class="product_data">
     <h1>{{product.name}}</h1>
     <h2>Price: <span>{{product.price}}$</span> </h2>
-    <div class="product_details">
-      <h3>Colors:</h3>
-      <ul>
-        <li>
-          <button (click)="changeImage(image)">
-          <img src="http://139.162.34.44:8084{{image}}" alt="">
-          </button>
-        </li>
-        <li *ngFor="let option of options">
-          <button (click)="changeImage(option.images[0].product_url)">
-            <img src="http://139.162.34.44:8084{{option.images[0].product_url }}" alt="">
-          </button>
-
-        </li>
-      </ul>
-
-
-      <h3>Item #: <span>{{product.id}}</span></h3>
+    <div class="product_options">
+      <select *ngIf="options?.length > 0" (change)="addImage($event.target.value)">
+        <option value=""></option>
+        <option *ngFor="let option of options" value="{{option.variant_id}}">{{option.options_text}}</option>
+      </select>
     </div>
     <button type="button" name="button">Add to Cart</button>
     <div class="product_description">
