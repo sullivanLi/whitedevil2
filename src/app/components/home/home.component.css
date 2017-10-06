@@ -15,7 +15,6 @@
 
 .background {
   background-image: url(app/images/bg.jpg);
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
@@ -50,10 +49,11 @@
 }
 
 .background_overlay_header {
-    font-size: 10vw;
+    font-size: 17vw;
     color: #000000;
     display: inline-block;
     position: relative;
+    margin: 0;
 }
 
 @keyframes animatedBackground {
@@ -74,12 +74,13 @@
 }
 
 .grid_item {
-  min-height: 130px;
+  min-height: 222px;
+  margin: 20px auto;
 }
 
 .women {
   background: #0099cc url(app/images/girl2.jpg) no-repeat;
-  background-position: top;
+  background-position: center;
   background-size: cover;
   grid-column: 1 / 2;
   grid-row: 2 /4;
@@ -96,10 +97,13 @@
   display: flex;
   -webkit-justify-content: space-around;
   justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .brands img {
-  width: 100px;
+  width: 119px;
+  display: block;
 }
 
 .men {
@@ -112,9 +116,6 @@
 
 .new_arrivals {
   background-color: #ff3300;
-  /*grid-column-end: span 2;
-  grid-row-end: span 2;*/
-  /*text-align: center;*/
   grid-column: 3 / -1;
   grid-row: 2/3;
 }
@@ -127,6 +128,7 @@
   background-color: #D2FF00;
   grid-column: 1 / 2;
   grid-row: 4 / 6;
+  padding-bottom: 30px;
 }
 
 .choice div {
@@ -155,8 +157,6 @@
 
 }
 
-
-
 .grid_item a {
   color: #ffffff;
   text-shadow: 2px 2px 2px #333;
@@ -167,11 +167,96 @@
   letter-spacing: -3px;
 }
 
+/* new_arrivals: fading images */
+.fading_images_wrapper {
+  max-width: 300px;
+  height: 200px;
+  margin: 20px auto;
+  position: relative;
+}
 
+.fading-image {
+  position: absolute;
+  width: 66%;
+  height: 100%;
+  margin: 0 49px;
+}
+
+.fadeIn01 {
+  background: url(app/images/new/adidas.png) no-repeat center;
+  background-size: cover;
+  animation:fade 8s infinite;
+  -webkit-animation:fade 8s infinite;
+}
+
+.fadeIn02 {
+  background: url(app/images/new/gloves.png) no-repeat center;
+  background-size: cover;
+  animation:fade2 8s infinite;
+  -webkit-animation:fade2 8s infinite;
+}
+
+.fadeIn03 {
+  background: url(app/images/new/shocklite_team.png) no-repeat center;
+  background-size: cover;
+  animation:fade3 8s infinite;
+  -webkit-animation:fade3 8s infinite;
+}
+
+@-webkit-keyframes fade {
+  0%   {opacity:1}
+  33.333% { opacity: 0}
+  66.666% { opacity: 0}
+  100% { opacity: 1}
+}
+
+@keyframes fade {
+  0%   {opacity:1}
+  33.333% { opacity: 0}
+  66.666% { opacity: 0}
+  100% { opacity: 1}
+}
+
+@-webkit-keyframes fade2 {
+  0%   {opacity:0}
+  33.333% { opacity: 1}
+  66.666% { opacity: 0 }
+  100% { opacity: 0}
+}
+
+@keyframes fade2 {
+  0%   {opacity:0}
+  33.333% { opacity: 1}
+  66.666% { opacity: 0 }
+  100% { opacity: 0}
+}
+
+@-webkit-keyframes fade3 {
+  0%   {opacity:0}
+  33.333% { opacity: 0}
+  66.666% { opacity: 1}
+  100% { opacity: 0}
+}
+
+@keyframes fade3 {
+  0%   {opacity:0}
+  33.333% { opacity: 0}
+  66.666% { opacity: 1}
+  100% { opacity: 0}
+}
 
 @media only screen and (min-width: 580px) {
   .hero_image {
     background-position: top;
+  }
+
+  /* white devile header with animation */
+  .background {
+    background-repeat: no-repeat;
+  }
+
+  .background_overlay_header {
+      font-size: 10vw;
   }
 
   .grid_container {
@@ -179,13 +264,33 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-auto-rows: minmax(150px, auto);
-    grid-gap: 130px 50px;
+    grid-auto-rows: minmax(130px, auto);
+    grid-gap: 10px 25px;
   }
 
   .intro_text {
-    grid-column: 2 / 3;
+    grid-column: 1 / 4;
     grid-row: 1;
+    margin: 0 54px;
+  }
+
+  .brands {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+  }
+
+  .new_arrivals {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+
+  .men {
+    grid-column: 2 / -1;
+    grid-row: 4 /6;
+  }
+
+  .grid_item {
+    margin: 0;
   }
 
   .grid_item a {
@@ -201,3 +306,29 @@
     background-position: center;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .intro_text {
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+
+  .brands {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .brands img {
+    width: 167px;
+  }
+
+  .new_arrivals {
+    grid-column: 3 / 4;
+      grid-row: 2;
+  }
+
+  .men {
+    grid-column: 2 / 4;
+    grid-row: 3 /6;
+  }
+} /* end min-width: 768px */
