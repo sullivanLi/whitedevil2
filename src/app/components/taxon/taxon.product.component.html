@@ -13,7 +13,9 @@
 
   <div class="product_list_container">
     <div *ngFor="let product of products" class="product_item">
-      <img src="http://139.162.34.44:8084/{{product.master.images[0].large_url}}">
+      <a routerLink="/products/{{product.slug}}">
+        <img src="http://139.162.34.44:8084/{{product.master.images[0].large_url}}">
+      </a>
 
       <div class="action_btns">
         <div class="add_to_cart">

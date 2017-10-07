@@ -149,3 +149,24 @@ img {
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
+
+/* breadcrumbs */
+.breadcrumbs_item li {
+  display: inline-block;
+  margin-right: 10px;
+  color: #262626;
+}
+
+.breadcrumbs_item li a {
+  text-decoration: none;
+}
+
+.breadcrumbs_item li a:hover,
+.breadcrumbs_item li a:visited,
+.breadcrumbs_item li a:focus {
+  color: #262626;
+}
+
+.breadcrumbs_item li {
+  color: #2eb8b8;
+}

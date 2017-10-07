@@ -5,6 +5,7 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'product',
   templateUrl: './app/components/product/product.component.html',
+  styleUrls: ['./app/components/product/product.component.css'],
   providers: [ProductService]
 })
 export class ProductComponent {
@@ -12,6 +13,8 @@ export class ProductComponent {
   options: Option[];
   option_images = {};
   basic_images: Image[];
+  color = "";
+
 
   constructor(
     private productService: ProductService,
@@ -26,12 +29,19 @@ export class ProductComponent {
         this.basic_images = productObj.master.images;
         this.options = [];
         productObj.variants.forEach((variant: any) => {
-          this.options.push({
-            variant_id: variant.id,
-            options_text: variant.options_text,
+          variant.option_values.forEach((option) => {
+            this.options.push({
+              variant_id: variant.id,
+              options_text: option.presentation,
+            });
           });
           this.option_images[variant.id] = variant.images;
         });
+
+        productObj.product_properties.forEach((property: any) => {
+          this.color = property.value;
+        });
+
       });
   }
 
@@ -52,6 +62,7 @@ export class ProductComponent {
       parent.removeChild(image);
     });
   }
+
 }
 interface Option {}
 interface Image {}

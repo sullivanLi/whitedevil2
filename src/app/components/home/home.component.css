@@ -1,5 +1,66 @@
 * { box-sizing: border-box; }
 
+/* Blurb section */
+.blurb {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.blurb p {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+.background {
+  background-image: url(app/images/bg.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 100%;
+  height: 260px;
+  position: relative;
+  animation: animatedBackground 10s linear infinite;
+}
+
+.background_overlay {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  background-color: #ffffff;
+  mix-blend-mode: lighten;
+}
+.background_overlay_inner {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
+  height: 250px;
+  flex: 1 1 100%;
+  -webkit-flex: 1 1 100%;
+}
+
+.background_overlay_header {
+    font-size: 17vw;
+    color: #000000;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+}
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 220px 0; }
+}
+
 .hero_image {
   background: #0099cc url(app/images/bg.jpg) no-repeat;
   background-position: right;
@@ -13,21 +74,36 @@
 }
 
 .grid_item {
-  min-height: 130px;
+  min-height: 222px;
+  margin: 20px auto;
 }
 
 .women {
   background: #0099cc url(app/images/girl2.jpg) no-repeat;
-  background-position: top;
+  background-position: center;
   background-size: cover;
   grid-column: 1 / 2;
   grid-row: 2 /4;
 }
 
-.sale {
+.brands {
   background-color: #B942FF;
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+}
+
+.brands_wrapper {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.brands img {
+  width: 119px;
+  display: block;
 }
 
 .men {
@@ -40,17 +116,45 @@
 
 .new_arrivals {
   background-color: #ff3300;
-  /*grid-column-end: span 2;
-  grid-row-end: span 2;*/
-  /*text-align: center;*/
   grid-column: 3 / -1;
   grid-row: 2/3;
+}
+
+.w3-animate-fading {
+    animation: fading 10s infinite;
 }
 
 .choice {
   background-color: #D2FF00;
   grid-column: 1 / 2;
   grid-row: 4 / 6;
+  padding-bottom: 30px;
+}
+
+.choice div {
+  width: 261px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.choice div p {
+  padding-bottom: 10px;
+}
+
+.choice div a {
+  border: #333 1px solid;
+  padding: 10px 15px;
+  color: #333;
+  text-shadow: none;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 2px #333;
+}
+
+.choice div a:hover {
+  box-shadow: 2px 5px 5px #333;
+
 }
 
 .grid_item a {
@@ -63,11 +167,96 @@
   letter-spacing: -3px;
 }
 
+/* new_arrivals: fading images */
+.fading_images_wrapper {
+  max-width: 300px;
+  height: 200px;
+  margin: 20px auto;
+  position: relative;
+}
 
+.fading-image {
+  position: absolute;
+  width: 66%;
+  height: 100%;
+  margin: 0 49px;
+}
+
+.fadeIn01 {
+  background: url(app/images/new/adidas.png) no-repeat center;
+  background-size: cover;
+  animation:fade 8s infinite;
+  -webkit-animation:fade 8s infinite;
+}
+
+.fadeIn02 {
+  background: url(app/images/new/gloves.png) no-repeat center;
+  background-size: cover;
+  animation:fade2 8s infinite;
+  -webkit-animation:fade2 8s infinite;
+}
+
+.fadeIn03 {
+  background: url(app/images/new/shocklite_team.png) no-repeat center;
+  background-size: cover;
+  animation:fade3 8s infinite;
+  -webkit-animation:fade3 8s infinite;
+}
+
+@-webkit-keyframes fade {
+  0%   {opacity:1}
+  33.333% { opacity: 0}
+  66.666% { opacity: 0}
+  100% { opacity: 1}
+}
+
+@keyframes fade {
+  0%   {opacity:1}
+  33.333% { opacity: 0}
+  66.666% { opacity: 0}
+  100% { opacity: 1}
+}
+
+@-webkit-keyframes fade2 {
+  0%   {opacity:0}
+  33.333% { opacity: 1}
+  66.666% { opacity: 0 }
+  100% { opacity: 0}
+}
+
+@keyframes fade2 {
+  0%   {opacity:0}
+  33.333% { opacity: 1}
+  66.666% { opacity: 0 }
+  100% { opacity: 0}
+}
+
+@-webkit-keyframes fade3 {
+  0%   {opacity:0}
+  33.333% { opacity: 0}
+  66.666% { opacity: 1}
+  100% { opacity: 0}
+}
+
+@keyframes fade3 {
+  0%   {opacity:0}
+  33.333% { opacity: 0}
+  66.666% { opacity: 1}
+  100% { opacity: 0}
+}
 
 @media only screen and (min-width: 580px) {
   .hero_image {
     background-position: top;
+  }
+
+  /* white devile header with animation */
+  .background {
+    background-repeat: no-repeat;
+  }
+
+  .background_overlay_header {
+      font-size: 10vw;
   }
 
   .grid_container {
@@ -75,22 +264,39 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-auto-rows: minmax(150px, auto);
-    grid-gap: 130px 50px;
+    grid-auto-rows: minmax(130px, auto);
+    grid-gap: 10px 25px;
   }
 
   .intro_text {
-    grid-column: 2 / 3;
+    grid-column: 1 / 4;
     grid-row: 1;
+    margin: 0 54px;
+  }
+
+  .brands {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+  }
+
+  .new_arrivals {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+
+  .men {
+    grid-column: 2 / -1;
+    grid-row: 4 /6;
+  }
+
+  .grid_item {
+    margin: 0;
   }
 
   .grid_item a {
     color: #ffffff;
   }
 
-  .grid_item:hover {
-    border-left: 5px solid #ccc;
-  }
   .grid_item:hover a{
     color: #ccc;
   }
@@ -100,3 +306,29 @@
     background-position: center;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .intro_text {
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+
+  .brands {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .brands img {
+    width: 167px;
+  }
+
+  .new_arrivals {
+    grid-column: 3 / 4;
+      grid-row: 2;
+  }
+
+  .men {
+    grid-column: 2 / 4;
+    grid-row: 3 /6;
+  }
+} /* end min-width: 768px */
